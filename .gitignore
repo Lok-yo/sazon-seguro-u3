@@ -1,0 +1,12 @@
+# Dependencias de Node.js
+node_modules/
+
+# Archivos de variables de entorno y secretos (NUNCA subir a Git)
+.env
+.env.local
+.env.*.local
+
+# Archivos de sistema y logs
+.DS_Store
+*.log
+npm-debug.log*

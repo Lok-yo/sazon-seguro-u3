@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sazón &amp; Fuego | Gastronomía Internacional, Ciencia Culinaria y Seguridad Web (U3)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Barra superior académica y de estado de seguridad -->
+  <div class="top-academic-bar">
+    <div class="container top-bar-inner">
+      <div class="academic-meta">
+        <span class="badge-pill badge-accent">UTSLRC • IDGS 9-2</span>
+        <span><strong>Desarrollo Web Integral</strong> — Unidad 3: Seguridad, Web Services y APIs</span>
+      </div>
+      <div class="security-live-pill" id="topSecurityIndicator">
+        <span class="status-dot"></span>
+        <span>Proxy API <code>.env</code> Activo • Tipo de Cambio: <strong id="topExchangeTicker">Cargando...</strong></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navegación Principal -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#inicio" class="brand-logo" data-route="inicio">
+        <div class="brand-emblem">🔥</div>
+        <div>
+          <span class="brand-title">Sazón &amp; Fuego</span>
+          <span class="brand-subtitle">Gastronomía &amp; Web Services Seguros</span>
+        </div>
+      </a>
+
+      <nav class="main-nav" aria-label="Navegación principal">
+        <button class="nav-tab active" data-route="inicio" id="nav-inicio">
+          <span class="nav-step">01</span> Inicio
+        </button>
+        <button class="nav-tab" data-route="tema" id="nav-tema">
+          <span class="nav-step">02</span> Cultura &amp; Recetario API
+        </button>
+        <button class="nav-tab" data-route="registro" id="nav-registro">
+          <span class="nav-step">03</span> Registro con Validación
+        </button>
+        <button class="nav-tab" data-route="seguridad" id="nav-seguridad">
+          <span class="nav-step">04</span> Seguridad Unidad 3
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-view-container">
+    <!-- ================================================================== -->
+    <!-- PANTALLA 1: INICIO (#inicio)                                       -->
+    <!-- ================================================================== -->
+    <section id="screen-inicio" class="app-screen active">
+      <div class="hero-section">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow-tag">PLATAFORMA GASTRONÓMICA &amp; ARQUITECTURA SEGURA</div>
+            <h1>Sazón &amp; Fuego: <em>Gastronomía Internacional</em> y Ciencia Culinaria</h1>
+            <p class="hero-lead">
+              Explora el patrimonio culinario mundial, los principios químicos de la cocción (reacción de Maillard, emulsiones y fermentación) y consulta recetas internacionales en tiempo real mediante nuestro <strong>Web Service seguro en Node.js</strong> conectado a <em>TheMealDB API</em> y <em>Open Exchange Rates API</em> con credenciales protegidas en variables de entorno (<code>.env</code>).
+            </p>
+            <div class="hero-actions">
+              <button class="btn btn-primary" data-goto="tema">
+                Explorar Recetario en Vivo (API) →
+              </button>
+              <button class="btn btn-secondary" data-goto="registro">
+                Crear Cuenta de Chef (Validación U3)
+              </button>
+            </div>
+
+            <div class="hero-metrics-row">
+              <div class="metric-box">
+                <span class="metric-val">2 APIs</span>
+                <span class="metric-label">TheMealDB + Divisas USD/MXN en vivo</span>
+              </div>
+              <div class="metric-box">
+                <span class="metric-val">scrypt + JWT</span>
+                <span class="metric-label">Cifrado de contraseñas y firma HS256</span>
+              </div>
+              <div class="metric-box">
+                <span class="metric-val">100% .env</span>
+                <span class="metric-label">Claves ocultas en Backend y excluidas de Git</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tarjeta de Platillo Destacado en Vivo desde la API -->
+          <div class="hero-featured-card">
+            <div class="featured-header">
+              <span class="live-api-badge">⚡ EN VIVO DESDE /api/recipes/search</span>
+              <span class="exchange-chip" id="heroExchangeBadge">1 USD = $19.85 MXN</span>
+            </div>
+            <div id="heroFeaturedRecipe" class="featured-recipe-body">
+              <div class="skeleton-loader">Cargando platillo insignia desde TheMealDB API...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarjetas de Pilares del Proyecto -->
+      <div class="container section-block">
+        <div class="section-heading">
+          <div>
+            <span class="section-kicker">ARQUITECTURA INTEGRAL</span>
+            <h2>Pilares de la Plataforma Sazón &amp; Fuego</h2>
+          </div>
+          <p class="section-desc">
+            Diseñada para cumplir rigurosamente los criterios de la <strong>Unidad 3 de Desarrollo Web Integral</strong>: consumo de servicios web externos, protección de secretos en servidor y validación robusta de formularios.
+          </p>
+        </div>
+
+        <div class="pillars-grid">
+          <article class="pillar-card">
+            <div class="pillar-icon">🍲</div>
+            <h3>1. Cultura Gastronómica y Ciencia Culinaria</h3>
+            <p>
+              Investigación estructurada sobre técnicas térmicas, rutas históricas de especias, denominaciones de origen y balance nutricional aplicada a platillos internacionales.
+            </p>
+            <button class="btn-link" data-goto="tema">Ir a Información del Tema →</button>
+          </article>
+
+          <article class="pillar-card">
+            <div class="pillar-icon">🌐</div>
+            <h3>2. Consumo de API Externa vía Proxy Backend</h3>
+            <p>
+              El navegador nunca contacta directamente a las APIs con llaves privadas. Nuestro endpoint <code>GET /api/recipes/search</code> lee <code>MEALDB_API_KEY</code> desde <code>.env</code> y calcula costos en MXN/USD en tiempo real.
+            </p>
+            <button class="btn-link" data-goto="tema">Probar Buscador de Recetas →</button>
+          </article>
+
+          <article class="pillar-card">
+            <div class="pillar-icon">🛡️</div>
+            <h3>3. Registro con Validación Dual y Criptografía</h3>
+            <p>
+              Formulario interactivo con validación en tiempo real de 8 campos, medidor de entropía de contraseña, sanitización contra XSS, hash <code>scrypt</code> con sal de 128 bits y cumplimiento LFPDPPP (Derechos ARCO).
+            </p>
+            <button class="btn-link" data-goto="registro">Probar Validación de Registro →</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- PANTALLA 2: INFORMACIÓN DEL TEMA Y API EXTERNA (#tema)             -->
+    <!-- ================================================================== -->
+    <section id="screen-tema" class="app-screen">
+      <div class="container section-block">
+        <!-- Encabezado Editorial -->
+        <div class="topic-banner">
+          <div class="topic-banner-content">
+            <span class="eyebrow-tag">FUNDAMENTO TEÓRICO Y PRÁCTICO DEL TEMA</span>
+            <h2>Ciencia Gastronómica, Técnicas Culinarias y Patrimonio Mundial</h2>
+            <p>
+              La gastronomía contemporánea une la tradición cultural de los pueblos con la físico-química de los alimentos. Comprender cómo reaccionan las proteínas, lípidos y carbohidratos bajo el calor permite transformar ingredientes locales en experiencias sensoriales extraordinarias.
+            </p>
+          </div>
+          <div class="topic-stats-card">
+            <h4>Indicadores Gastronómicos Globales</h4>
+            <ul>
+              <li><strong>145°C – 165°C:</strong> Rango óptimo para la Reacción de Maillard (dorado y compuestos aromáticos pirazinas).</li>
+              <li><strong>Patrimonio UNESCO:</strong> La Cocina Tradicional Mexicana (paradigma de Michoacán) fue inscrita en 2010.</li>
+              <li><strong>Nixtamalización:</strong> Proceso alcalino prehispánico que incrementa la biodisponibilidad de niacina (Vitamina B3) y calcio.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 4 Tarjetas de Contenido Temático Profundo -->
+        <div class="culinary-science-grid">
+          <article class="science-card">
+            <span class="science-tag">TERMODINÁMICA CULINARIA</span>
+            <h3>Reacción de Maillard vs. Caramelización</h3>
+            <p>
+              Descubierta por Louis-Camille Maillard en 1912, es una cascada de reacciones químicas no enzimáticas entre un grupo amino de los aminoácidos y un grupo carbonilo de los azúcares reductores al superar los <strong>140°C</strong>. Es responsable de la corteza dorada de un corte de carne sellado, del pan recién horneado y del café tostado.
+            </p>
+          </article>
+
+          <article class="science-card">
+            <span class="science-tag">COLOIDES Y TEXTURAS</span>
+            <h3>Emulsiones Culinarias Estables</h3>
+            <p>
+              Una emulsión une dos líquidos inmiscibles (fase acuosa y fase lipídica) mediante agitación mecánica y un agente tensioactivo (como la lecitina en la yema de huevo o los mucílagos del ajo y la mostaza). Ejemplos clásicos incluyen la salsa holandesa, el alioli mediterráneo y las vinagretas emulsionadas.
+            </p>
+          </article>
+
+          <article class="science-card">
+            <span class="science-tag">BIOTECNOLOGÍA ANCESTRAL</span>
+            <h3>Fermentación Láctica y Desarrollo del Umami</h3>
+            <p>
+              Los microorganismos benéficos (<em>Lactobacillus</em>, <em>Aspergillus oryzae</em> y levaduras silvestres) desdoblan almidones y proteínas liberando ácido glutámico libre (el quinto sabor: <strong>umami</strong>), mejorando la digestibilidad y creando alimentos como masa madre, miso, kimchi, tepache y quesos madurados.
+            </p>
+          </article>
+
+          <article class="science-card">
+            <span class="science-tag">ECONOMÍA E INGREDIENTES</span>
+            <h3>Rutas de las Especias y Costeo en Divisas</h3>
+            <p>
+              Ingredientes como el azafrán español, la vainilla de Papantla, el cardamomo y el aceite de oliva virgen extra cotizan en mercados internacionales en dólares (USD). Por ello, nuestro sistema integra un servicio cambiario en tiempo real para estimar el costo por receta en <strong>Pesos Mexicanos (MXN)</strong> y <strong>Dólares (USD)</strong>.
+            </p>
+          </article>
+        </div>
+
+        <!-- Explorador en Vivo conectado a la API Externa -->
+        <div class="api-explorer-wrapper">
+          <div class="api-explorer-header">
+            <div>
+              <span class="live-api-badge">🌐 CONSUMO DE API EXTERNA EN TIEMPO REAL</span>
+              <h3>Explorador Internacional de Recetas (TheMealDB API + OpenExchange API)</h3>
+              <p>
+                Cada búsqueda realiza una petición asíncrona a nuestro endpoint <code>GET /api/recipes/search</code> o <code>GET /api/recipes/category</code>, el cual inyecta la clave <code>MEALDB_API_KEY</code> almacenada en el archivo <code>.env</code> del servidor.
+              </p>
+            </div>
+            <div class="api-telemetry-box">
+              <div><small>Endpoint Backend:</small> <code id="currentApiEndpoint">/api/recipes/search?q=Arrabiata</code></div>
+              <div><small>Tipo de Cambio Aplicado:</small> <strong id="explorerExchangeRate">1 USD = $19.85 MXN</strong></div>
+            </div>
+          </div>
+
+          <!-- Controles de búsqueda y filtros por categoría -->
+          <div class="explorer-controls">
+            <form id="recipeSearchForm" class="search-bar-form">
+              <input
+                type="search"
+                id="recipeSearchInput"
+                placeholder="Buscar platillo o ingrediente en inglés (ej. Arrabiata, Taco, Chicken, Salmon, Curry, Cake)..."
+                value="Chicken"
+                aria-label="Buscar receta"
+              />
+              <button type="submit" class="btn btn-primary">Consultar API</button>
+            </form>
+
+            <div class="category-pills" role="group" aria-label="Filtrar por categoría culinaria">
+              <button type="button" class="cat-pill active" data-category="Seafood">🦐 Mariscos (Seafood)</button>
+              <button type="button" class="cat-pill" data-category="Mexican">🌮 Cocina Mexicana</button>
+              <button type="button" class="cat-pill" data-category="Beef">🥩 Cortes y Res (Beef)</button>
+              <button type="button" class="cat-pill" data-category="Chicken">🍗 Aves (Chicken)</button>
+              <button type="button" class="cat-pill" data-category="Vegetarian">🥗 Vegetariano</button>
+              <button type="button" class="cat-pill" data-category="Pasta">🍝 Pastas Italianas</button>
+              <button type="button" class="cat-pill" data-category="Dessert">🍰 Repostería (Dessert)</button>
+            </div>
+          </div>
+
+          <!-- Estado y Cuadrícula de Resultados de la API -->
+          <div id="apiStatusBanner" class="api-status-banner">
+            Conectado al Web Service local. Mostrando resultados enriquecidos con ingredientes, instrucciones y costeo dinámico.
+          </div>
+
+          <div id="recipesGrid" class="recipes-grid">
+            <!-- Tarjetas renderizadas dinámicamente por app.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- PANTALLA 3: REGISTRO DE USUARIO CON VALIDACIÓN (#registro)         -->
+    <!-- ================================================================== -->
+    <section id="screen-registro" class="app-screen">
+      <div class="container section-block">
+        <div class="section-heading">
+          <div>
+            <span class="section-kicker">SEGURIDAD EN FORMULARIOS • OWASP &amp; LFPDPPP</span>
+            <h2>Registro de Chef / Comunidad Gastronómica</h2>
+          </div>
+          <div class="demo-toolbar">
+            <span class="demo-toolbar-label">Pruebas Rápidas de Validación:</span>
+            <button type="button" class="btn btn-outline-danger btn-sm" id="btnSimulateErrors">
+              ⚠️ Simular Datos Inválidos (Ver Errores)
+            </button>
+            <button type="button" class="btn btn-outline-success btn-sm" id="btnSimulateValid">
+              ✅ Cargar Datos Válidos y Registrar
+            </button>
+          </div>
+        </div>
+
+        <div class="registration-layout">
+          <!-- Columna Izquierda: Formulario de Registro con Validación en Tiempo Real -->
+          <div class="form-card">
+            <div class="form-card-header">
+              <h3>Formulario de Alta con Validación Dual (Cliente + Servidor)</h3>
+              <p>
+                Todos los campos cuentan con validación reactiva en el navegador y verificación estricta en el endpoint <code>POST /api/auth/register</code> antes de generar el hash <code>scrypt</code> y el token <code>JWT</code>.
+              </p>
+            </div>
+
+            <!-- Banner global de respuesta del formulario -->
+            <div id="formGlobalAlert" class="form-global-alert hidden" role="alert"></div>
+
+            <form id="registerForm" novalidate>
+              <div class="form-row-2">
+                <!-- Campo 1: Nombre Completo -->
+                <div class="form-group" id="group-nombre">
+                  <label for="inputNombre">Nombre Completo del Chef / Estudiante <span class="req">*</span></label>
+                  <input
+                    type="text"
+                    id="inputNombre"
+                    name="nombre"
+                    placeholder="Ej. Elena Reygadas Castillo"
+                    autocomplete="name"
+                    required
+                  />
+                  <small class="field-hint">Solo letras y espacios (entre 3 y 60 caracteres).</small>
+                  <small class="field-error" id="error-nombre"></small>
+                </div>
+
+                <!-- Campo 2: Nombre de Usuario -->
+                <div class="form-group" id="group-usuario">
+                  <label for="inputUsuario">Nombre de Usuario (ID Culinario) <span class="req">*</span></label>
+                  <input
+                    type="text"
+                    id="inputUsuario"
+                    name="usuario"
+                    placeholder="Ej. chef_elena26"
+                    autocomplete="username"
+                    required
+                  />
+                  <small class="field-hint">4 a 20 caracteres alfanuméricos o guion bajo (_).</small>
+                  <small class="field-error" id="error-usuario"></small>
+                </div>
+              </div>
+
+              <div class="form-row-2">
+                <!-- Campo 3: Correo Electrónico -->
+                <div class="form-group" id="group-email">
+                  <label for="inputEmail">Correo Electrónico Institucional o Personal <span class="req">*</span></label>
+                  <input
+                    type="email"
+                    id="inputEmail"
+                    name="email"
+                    placeholder="Ej. elena.reygadas@gastronomia.mx"
+                    autocomplete="email"
+                    required
+                  />
+                  <small class="field-hint">Se almacenará enmascarado según política de privacidad.</small>
+                  <small class="field-error" id="error-email"></small>
+                </div>
+
+                <!-- Campo 4: Teléfono a 10 dígitos -->
+                <div class="form-group" id="group-telefono">
+                  <label for="inputTelefono">Teléfono de Contacto (10 dígitos) <span class="req">*</span></label>
+                  <input
+                    type="tel"
+                    id="inputTelefono"
+                    name="telefono"
+                    placeholder="Ej. 6531948271"
+                    maxlength="10"
+                    required
+                  />
+                  <small class="field-hint">Exactamente 10 dígitos numéricos sin espacios ni guiones.</small>
+                  <small class="field-error" id="error-telefono"></small>
+                </div>
+              </div>
+
+              <!-- Campo 5: Especialidad Culinaria -->
+              <div class="form-group" id="group-especialidad">
+                <label for="inputEspecialidad">Especialidad o Línea de Investigación Gastronómica <span class="req">*</span></label>
+                <select id="inputEspecialidad" name="especialidad" required>
+                  <option value="">-- Selecciona una especialidad culinaria --</option>
+                  <option value="Cocina Mexicana Patrimonial">Cocina Mexicana Patrimonial</option>
+                  <option value="Alta Cocina Internacional">Alta Cocina Internacional</option>
+                  <option value="Panadería y Repostería Artesanal">Panadería y Repostería Artesanal</option>
+                  <option value="Ciencia de los Alimentos y Fermentación">Ciencia de los Alimentos y Fermentación</option>
+                  <option value="Parrilla, Brasa y Ahumados">Parrilla, Brasa y Ahumados</option>
+                  <option value="Nutrición y Cocina Basada en Plantas">Nutrición y Cocina Basada en Plantas</option>
+                </select>
+                <small class="field-error" id="error-especialidad"></small>
+              </div>
+
+              <div class="form-row-2">
+                <!-- Campo 6: Contraseña -->
+                <div class="form-group" id="group-password">
+                  <label for="inputPassword">Contraseña Segura (Política OWASP) <span class="req">*</span></label>
+                  <input
+                    type="password"
+                    id="inputPassword"
+                    name="password"
+                    placeholder="Mínimo 8 caracteres..."
+                    autocomplete="new-password"
+                    required
+                  />
+                  <!-- Barra de Fortaleza -->
+                  <div class="strength-meter-wrap">
+                    <div class="strength-bar-track">
+                      <div id="passwordStrengthBar" class="strength-bar-fill"></div>
+                    </div>
+                    <span id="passwordStrengthLabel" class="strength-label">Sin evaluar</span>
+                  </div>
+                  <small class="field-error" id="error-password"></small>
+                </div>
+
+                <!-- Campo 7: Confirmar Contraseña -->
+                <div class="form-group" id="group-confirmPassword">
+                  <label for="inputConfirmPassword">Confirmar Contraseña <span class="req">*</span></label>
+                  <input
+                    type="password"
+                    id="inputConfirmPassword"
+                    name="confirmPassword"
+                    placeholder="Repite tu contraseña exactamente"
+                    autocomplete="new-password"
+                    required
+                  />
+                  <small class="field-hint">Debe coincidir carácter por carácter con la contraseña.</small>
+                  <small class="field-error" id="error-confirmPassword"></small>
+                </div>
+              </div>
+
+              <!-- Checklist en vivo de requisitos de contraseña -->
+              <div class="password-checklist" id="passwordChecklist">
+                <span class="chk-item" id="rule-len">○ Mínimo 8 caracteres</span>
+                <span class="chk-item" id="rule-upper">○ 1 letra mayúscula (A-Z)</span>
+                <span class="chk-item" id="rule-lower">○ 1 letra minúscula (a-z)</span>
+                <span class="chk-item" id="rule-num">○ 1 número (0-9)</span>
+                <span class="chk-item" id="rule-spec">○ 1 símbolo especial (!@#$%^&amp;*)</span>
+              </div>
+
+              <!-- Campo 8: Consentimiento LFPDPPP y Derechos ARCO -->
+              <div class="form-group checkbox-group" id="group-aceptaPrivacidad">
+                <label class="checkbox-label">
+                  <input type="checkbox" id="inputPrivacidad" name="aceptaPrivacidad" />
+                  <span>
+                    He leído y acepto el <strong>Aviso de Privacidad Integral</strong> conforme a la <em>Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP)</em> y conozco mis <strong>Derechos ARCO</strong> (Acceso, Rectificación, Cancelación y Oposición). <span class="req">*</span>
+                  </span>
+                </label>
+                <small class="field-error" id="error-aceptaPrivacidad"></small>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary btn-lg" id="btnSubmitRegister">
+                  🔐 Validar Datos y Registrar Usuario
+                </button>
+                <button type="reset" class="btn btn-ghost" id="btnResetForm">
+                  Limpiar Formulario
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Columna Derecha: Evidencia Criptográfica (Hash scrypt + JWT) y Tabla de Usuarios -->
+          <div class="audit-column">
+            <!-- Panel de Evidencia de Registro Exitoso -->
+            <div class="crypto-receipt-card" id="cryptoReceiptCard">
+              <div class="receipt-header">
+                <span class="badge-pill badge-success">AUDITORÍA CRIPTOGRÁFICA EN VIVO</span>
+                <h4>Resultado del Procesamiento en Backend</h4>
+              </div>
+              <div id="cryptoReceiptBody" class="receipt-body">
+                <p class="receipt-placeholder">
+                  Completa el registro o presiona <strong>"Cargar Datos Válidos y Registrar"</strong> para inspeccionar el hash <code>scrypt</code> con sal aleatoria de 128 bits y el JSON Web Token (<code>JWT HS256</code>) generado por el servidor.
+                </p>
+              </div>
+            </div>
+
+            <!-- Tabla de Usuarios Registrados con Datos Protegidos -->
+            <div class="users-table-card">
+              <div class="users-table-header">
+                <div>
+                  <h4>Directorio de Chefs Registrados (Datos Enmascarados)</h4>
+                  <p>Demostración de almacenamiento seguro: correos ocultos parcialmente y contraseñas hasheadas con <code>scrypt</code>.</p>
+                </div>
+                <span class="user-count-badge" id="totalUsersBadge">1 registrado</span>
+              </div>
+              <div class="table-responsive">
+                <table class="secure-table">
+                  <thead>
+                    <tr>
+                      <th>ID / Usuario</th>
+                      <th>Nombre y Especialidad</th>
+                      <th>Contacto Protegido</th>
+                      <th>Hash Criptográfico (scrypt)</th>
+                    </tr>
+                  </thead>
+                  <tbody id="registeredUsersTableBody">
+                    <!-- Poblado por app.js -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- PANTALLA 4: SEGURIDAD Y WEB SERVICES — UNIDAD 3 (#seguridad)       -->
+    <!-- ================================================================== -->
+    <section id="screen-seguridad" class="app-screen">
+      <div class="container section-block">
+        <div class="section-heading">
+          <div>
+            <span class="section-kicker">EVIDENCIA TÉCNICA DE LA UNIDAD 3</span>
+            <h2>Arquitectura de Seguridad, Variables <code>.env</code> y Web Services</h2>
+          </div>
+          <p class="section-desc">
+            Panel de diagnóstico en tiempo real conectado a <code>GET /api/security/status</code> que comprueba el aislamiento de claves de API en el servidor, las cabeceras HTTP seguras y el cumplimiento de estándares OWASP.
+          </p>
+        </div>
+
+        <!-- Diagrama de Flujo de Arquitectura Segura -->
+        <div class="arch-flow-card">
+          <h3>Flujo de Comunicación Segura Cliente → Backend Proxy (<code>.env</code>) → APIs Externas</h3>
+          <div class="arch-steps">
+            <div class="arch-node">
+              <span class="arch-step-num">Paso 1</span>
+              <strong>Cliente Web (Frontend SPA)</strong>
+              <p>Solicita recetas a <code>/api/recipes/search?q=...</code>. No posee ninguna API Key en el código JavaScript del navegador.</p>
+            </div>
+            <div class="arch-arrow">➔</div>
+            <div class="arch-node highlight-node">
+              <span class="arch-step-num">Paso 2</span>
+              <strong>Servidor Node.js + Express</strong>
+              <p>Valida la entrada, aplica <em>Rate Limiting</em>, lee <code>process.env.MEALDB_API_KEY</code> desde el archivo <code>.env</code> (ignorado por Git).</p>
+            </div>
+            <div class="arch-arrow">➔</div>
+            <div class="arch-node">
+              <span class="arch-step-num">Paso 3</span>
+              <strong>TheMealDB &amp; ExchangeRate API</strong>
+              <p>Responden con JSON al servidor; el backend normaliza los ingredientes, calcula el costo en MXN/USD y responde al cliente.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="security-dashboard-grid">
+          <!-- Panel de Variables de Entorno (.env) y .gitignore -->
+          <div class="sec-panel">
+            <div class="sec-panel-header">
+              <h3>1. Gestión de Secretos con <code>.env</code> y <code>.gitignore</code></h3>
+              <span class="badge-pill badge-success">VERIFICADO EN SERVIDOR</span>
+            </div>
+            <p class="sec-panel-intro">
+              Las credenciales nunca se escriben directamente en el código fuente (<em>hardcoding</em>). Se cargan en memoria mediante el paquete <code>dotenv</code> al iniciar <code>server.js</code>:
+            </p>
+            <pre class="code-snippet"><code># Archivo .env (Excluido del repositorio mediante .gitignore)
+PORT=3000
+MEALDB_API_KEY=1
+MEALDB_BASE_URL=https://www.themealdb.com/api/json/v1
+EXCHANGE_API_URL=https://open.er-api.com/v6/latest/USD
+JWT_SECRET=utslrc_idgs92_desarrollo_web_integral_secret_key_2026</code></pre>
+
+            <div id="envLiveMetrics" class="env-metrics-list">
+              <!-- Cargado desde /api/security/status -->
+            </div>
+          </div>
+
+          <!-- Panel de Controles de Seguridad Activos -->
+          <div class="sec-panel">
+            <div class="sec-panel-header">
+              <h3>2. Controles de Seguridad Aplicados (Unidad 3)</h3>
+              <span class="badge-pill badge-accent">OWASP TOP 10</span>
+            </div>
+            <div id="securityControlsList" class="controls-list">
+              <!-- Cargado desde /api/security/status -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Inspector de Respuesta JSON en Vivo -->
+        <div class="json-inspector-card">
+          <div class="json-inspector-header">
+            <div>
+              <h3>3. Inspector en Vivo de Respuestas JSON del Web Service</h3>
+              <p>Haz clic en cualquiera de los endpoints del servidor para inspeccionar la carga útil JSON devuelta en tiempo real.</p>
+            </div>
+            <div class="inspector-buttons">
+              <button type="button" class="btn btn-sm btn-secondary" data-inspect="/api/security/status">
+                GET /api/security/status
+              </button>
+              <button type="button" class="btn btn-sm btn-secondary" data-inspect="/api/recipes/search?q=Arrabiata">
+                GET /api/recipes/search?q=Arrabiata
+              </button>
+              <button type="button" class="btn btn-sm btn-secondary" data-inspect="/api/auth/users">
+                GET /api/auth/users
+              </button>
+            </div>
+          </div>
+          <pre id="jsonInspectorOutput" class="json-output">Cargando diagnóstico de seguridad del servidor...</pre>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal de Detalle de Receta Paso a Paso -->
+  <div id="recipeModal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="modalRecipeTitle">
+    <div class="modal-dialog">
+      <button type="button" class="modal-close-btn" id="closeModalBtn" aria-label="Cerrar ventana">✕</button>
+      <div id="modalRecipeContent"></div>
+    </div>
+  </div>
+
+  <!-- Pie de Página Académico -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>Sazón &amp; Fuego — Plataforma Web con API Externa y Seguridad</strong>
+        <p>Universidad Tecnológica de San Luis Río Colorado (UTSLRC) • Ingeniería en Desarrollo y Gestión de Software (IDGS 9-2)</p>
+      </div>
+      <div class="footer-right">
+        <p><strong>Materia:</strong> Desarrollo Web Integral (Unidad 3)</p>
+        <p><strong>Profesor:</strong> Jose Julian Reyes Patiño • <strong>Alumno:</strong> Luis Angel Leon Almazan</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
